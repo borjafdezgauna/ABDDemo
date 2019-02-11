@@ -9,5 +9,9 @@ namespace MiniSQLEngine
     class Class2
     {
         //Added Class 2
+        public int foo()
+        {
+            return 2;
+        }
     }
 }
