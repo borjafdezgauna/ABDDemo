@@ -1,0 +1,4 @@
+Name String
+Age Int
+Id PRIMARY_KEY(Int)
+Address String

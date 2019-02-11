@@ -17,26 +17,26 @@ namespace Demo
         }
         static void Main(string[] args)
         {
-            //string input = "lkasjdflkjs SELECT * FROM table1 alskdjf 23k 2j slkdjflk ss SELECT * FROM table2";
-            //string regExp = @"SELECT\s+(\*)\s+FROM\s+(\w+)";
+            string input = "lkasjdflkjs SELECT * FROM table1 alskdjf 23k 2j slkdjflk ss SELECT * FROM table2";
+            string regExp = @"SELECT\s+(\*)\s+FROM\s+(\w+)";
 
-            ////buscamos solo 1 coincidencia
-            //Console.WriteLine("Regex.Match()");
-            //Match match= Regex.Match(input, regExp);
-            //if (match.Success)
-            //{
-            //    Console.WriteLine("Groups[0]= " + match.Groups[0].Value );
-            //    Console.WriteLine("Groups[1]= " + match.Groups[1].Value );
-            //    Console.WriteLine("Groups[2]= " + match.Groups[2].Value );
-            //}
-            //Console.WriteLine("Regex.Matches()");
-            //foreach (Match m in Regex.Matches(input,regExp))
-            //{
-            //    Console.WriteLine("Groups[0]= " + m.Groups[0].Value );
-            //    Console.WriteLine("Groups[1]= " + m.Groups[1].Value );
-            //    Console.WriteLine("Groups[2]= " + m.Groups[2].Value );
-            //}
-            Directory.
+            //buscamos solo 1 coincidencia
+            Console.WriteLine("Regex.Match()");
+            Match match = Regex.Match(input, regExp);
+            if (match.Success)
+            {
+                Console.WriteLine("Groups[0]= " + match.Groups[0].Value);
+                Console.WriteLine("Groups[1]= " + match.Groups[1].Value);
+                Console.WriteLine("Groups[2]= " + match.Groups[2].Value);
+            }
+            Console.WriteLine("Regex.Matches()");
+            foreach (Match m in Regex.Matches(input, regExp))
+            {
+                Console.WriteLine("Groups[0]= " + m.Groups[0].Value);
+                Console.WriteLine("Groups[1]= " + m.Groups[1].Value);
+                Console.WriteLine("Groups[2]= " + m.Groups[2].Value);
+            }
+
             using (StreamWriter writer = File.CreateText("../../../db/test.txt"))
             {
                 writer.WriteLine("Name String");
