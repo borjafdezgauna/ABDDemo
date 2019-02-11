@@ -11,6 +11,8 @@ namespace MiniSQLEngine
         public bool Query(string queryString, out string result)
         {
             result = Constants.NotImplemented;
+            //added a comment
+
             return true;
         }
     }
