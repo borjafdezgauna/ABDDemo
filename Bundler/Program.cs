@@ -9,28 +9,21 @@ namespace Portable_Badger
 {
     class Program
     {
-        public const string ProjectName = "MiniSQLEngine"; 
-        public static string inBaseRelPath = @"../../../"; //root folder of the solution used for relative paths
-        public static string outBaseFolder;
+        public static string RelPathToSolutionRootFolder = "../"; //relative path to the solution root folder from Bundler.exe
+        public static string RootFolderInZip;
         public static void Main()
         {
             List<string> files = new List<string>();
             string version;
 
-            version = GetVersion(inBaseRelPath + "MyProgram.exe");
+            version = GetVersion(RelPathToSolutionRootFolder + "Release/Demo.exe");
 
-            outBaseFolder = ProjectName + "-" + version + @"/"; //name of the folder created inside the zip file
+            RootFolderInZip = "OurProject/"; //name of the folder created inside the zip file
 
-            files.Add(inBaseRelPath + ProjectName + ".exe");
-            //Add any other files you need to add
-            //files.Add(inBaseRelPath + ...);
-            //files.Add(inBaseRelPath + ...);
+            files.Add(RelPathToSolutionRootFolder + "Release/Demo.exe");
+            files.Add(RelPathToSolutionRootFolder + "Release/MiniSQLEngine.dll");
 
-            List<string> dependencyList = new List<string>();
-            GetDependencies(inBaseRelPath, ProjectName + ".exe", ref dependencyList);
-            files.AddRange(dependencyList);
-
-            string outputFile = inBaseRelPath + ProjectName + "-" + version + ".zip"; //name of the output zip file
+            string outputFile = RelPathToSolutionRootFolder + "OurProject-" + version + ".zip"; //name of the output zip file
 
             Console.WriteLine("Compressing files");
             Compress(outputFile, files);
@@ -86,7 +79,7 @@ namespace Portable_Badger
                     {
                         if (System.IO.File.Exists(file))
                         {
-                            archive.CreateEntryFromFile(file, outBaseFolder + file.Substring(inBaseRelPath.Length));
+                            archive.CreateEntryFromFile(file, RootFolderInZip + file.Substring(RelPathToSolutionRootFolder.Length));
                             numFilesAdded++;
                         }
                         else Console.WriteLine("Couldn't find file: {0}", file);
