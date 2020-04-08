@@ -36,8 +36,10 @@ steps:
       cd bin
       Bundler.exe
     failOnStderr: true
+
 - task: GitHubRelease@1
-  inputs:
+  condition: eq(variables['build.sourceBranch'], 'refs/heads/master')
+  inputs: 
     gitHubConnection: 'github.com_borjafdezgauna'
     repositoryName: '$(Build.Repository.Name)'
     action: 'edit'
