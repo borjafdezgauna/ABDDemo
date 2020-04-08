@@ -36,13 +36,14 @@ steps:
       cd bin
       Bundler.exe
     failOnStderr: true
-
 - task: GitHubRelease@1
   inputs:
+    gitHubConnection: 'github.com_borjafdezgauna'
     repositoryName: '$(Build.Repository.Name)'
-    gitHubConnection: 'borjafdezgauna'
-    action: 'create'
+    action: 'edit'
     target: '$(Build.SourceVersion)'
-    tagSource: 'gitTag'
+    tag: '$(Build.BuildNumber)'
+    title: 'MiniSQL'
+    assets: '$(Build.OutputDirectory)/*.zip'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
