@@ -18,7 +18,7 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Clean
-      run: dotnet clean ./ABDDemo/MySolution.sln --configuration Release && dotnet nuget locals all --clear
+      run: dotnet clean ./MySolution.sln --configuration Release && dotnet nuget locals all --clear
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
