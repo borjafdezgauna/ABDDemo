@@ -20,8 +20,8 @@ jobs:
     - name: Clean
       run: dotnet clean ./MySolution.sln --configuration Release && dotnet nuget locals all --clear
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./MySolution.sln
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build ./MySolution.sln --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test ./MySolution.sln --no-build --verbosity normal
